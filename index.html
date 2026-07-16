@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Campex — inteligência visual para operações industriais." />
+  <meta name="theme-color" content="#080a0f" />
+  <title>Campex — Inteligência para operações reais</title>
+
+  <!-- Fonte opcional. O site continua funcionando sem internet usando os fallbacks. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-noise" aria-hidden="true"></div>
+
+  <header class="site-header" data-header>
+    <a class="brand" href="#inicio" aria-label="Campex — início">
+      <svg class="brand-mark" viewBox="0 0 42 42" aria-hidden="true">
+        <path d="M7 7h12v12H7zM23 7h12v12H23zM7 23h12v12H7z" />
+        <path class="brand-mark-accent" d="M23 23h12v12H23z" />
+      </svg>
+      <span>CAMPEX</span>
+    </a>
+
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-button>
+      <span></span><span></span>
+      <span class="sr-only">Abrir menu</span>
+    </button>
+
+    <nav class="main-nav" id="main-nav" data-menu>
+      <a href="#sistema">Sistema</a>
+      <a href="#aplicacoes">Aplicações</a>
+      <a href="#plataforma">Plataforma</a>
+      <a class="nav-cta" href="#contato">Conhecer a Campex <span>↗</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO: EDITE AQUI O TÍTULO, TEXTO E CTA PRINCIPAL -->
+    <section class="hero section-dark" id="inicio">
+      <div class="hero-glow hero-glow-one" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow-two" aria-hidden="true"></div>
+
+      <div class="hero-copy reveal">
+        <p class="eyebrow"><span class="status-dot"></span> Inteligência visual para operações físicas</p>
+        <h1>Sua operação já tem olhos.<br /><span>Agora ela pode entender.</span></h1>
+        <p class="hero-description">
+          A Campex transforma as câmeras que sua empresa já usa em uma camada de inteligência capaz de detectar eventos, organizar evidências e acelerar decisões.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#contato">Participar do piloto <span>↗</span></a>
+          <a class="text-link" href="#sistema">Entender o sistema <span>↓</span></a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal reveal-delay-1" aria-label="Demonstração visual da plataforma Campex">
+        <div class="visual-topbar">
+          <div class="visual-location">
+            <span class="live-dot"></span>
+            Unidade 01 · Linha principal
+          </div>
+          <div class="visual-time" data-clock>16:42:08</div>
+        </div>
+
+        <div class="camera-scene">
+          <div class="scene-grid"></div>
+          <div class="machine machine-one">
+            <span class="machine-light"></span>
+          </div>
+          <div class="machine machine-two"></div>
+          <div class="person-shape person-one"><span></span></div>
+          <div class="person-shape person-two"><span></span></div>
+
+          <div class="scan-line"></div>
+          <div class="detection-box detection-person">
+            <span>OPERADOR · 94%</span>
+          </div>
+          <div class="detection-box detection-zone">
+            <span>ÁREA CONTROLADA</span>
+          </div>
+          <div class="event-pin">!</div>
+
+          <div class="camera-label">
+            <span>CAM 04</span>
+            <span>IA ATIVA</span>
+          </div>
+        </div>
+
+        <div class="event-panel">
+          <div>
+            <p class="panel-label">Evento identificado</p>
+            <p class="panel-title">Entrada em área restrita</p>
+          </div>
+          <div class="event-status">Alerta enviado</div>
+        </div>
+      </div>
+
+      <div class="hero-bottom reveal reveal-delay-2">
+        <p>Detectar</p><span></span><p>Entender</p><span></span><p>Alertar</p><span></span><p>Agir</p>
+      </div>
+    </section>
+
+    <section class="statement section-light">
+      <div class="statement-index reveal">/ 001</div>
+      <div class="statement-content reveal reveal-delay-1">
+        <p class="eyebrow eyebrow-dark">O problema</p>
+        <h2>A maior parte do que acontece na operação <em>nunca vira dado.</em></h2>
+        <div class="statement-columns">
+          <p>Câmeras registram milhares de horas. Pessoas percebem apenas uma fração. Eventos importantes são descobertos tarde — ou nunca.</p>
+          <p>A Campex conecta visão computacional, contexto operacional e alertas para transformar vídeo em informação que realmente move a empresa.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SISTEMA: TRÊS BLOCOS NO RITMO EDITORIAL DA REFERÊNCIA -->
+    <section class="system section-blue" id="sistema">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow eyebrow-light">O sistema Campex</p>
+          <h2>Uma camada de inteligência sobre o que já existe.</h2>
+        </div>
+        <p class="section-intro">Sem trocar toda a infraestrutura. A Campex conecta as câmeras, interpreta os eventos e entrega a informação certa para quem precisa agir.</p>
+      </div>
+
+      <div class="system-grid">
+        <article class="system-card reveal">
+          <div class="system-card-top"><span>/ 001</span><span class="system-icon">⌁</span></div>
+          <h3>Conecte as câmeras</h3>
+          <p>Integre os pontos de visão existentes e organize as áreas críticas da operação em uma única plataforma.</p>
+          <div class="system-visual mini-cameras" aria-hidden="true">
+            <div></div><div></div><div></div>
+          </div>
+        </article>
+
+        <article class="system-card reveal reveal-delay-1">
+          <div class="system-card-top"><span>/ 002</span><span class="system-icon">◎</span></div>
+          <h3>Defina o que importa</h3>
+          <p>Crie regras para eventos, zonas, comportamentos e situações que exigem atenção imediata.</p>
+          <div class="system-visual mini-rule" aria-hidden="true">
+            <span>SE</span><strong>pessoa entra na zona</strong><span>ENTÃO</span><strong>criar incidente</strong>
+          </div>
+        </article>
+
+        <article class="system-card reveal reveal-delay-2">
+          <div class="system-card-top"><span>/ 003</span><span class="system-icon">↗</span></div>
+          <h3>Transforme em ação</h3>
+          <p>Receba alertas com evidência visual, registre o incidente e acompanhe o que aconteceu depois.</p>
+          <div class="system-visual mini-alert" aria-hidden="true">
+            <div class="mini-alert-badge">ALERTA</div>
+            <strong>Área restrita</strong>
+            <small>Agora · Câmera 04</small>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="applications section-dark" id="aplicacoes">
+      <div class="section-heading reveal">
+        <div>
+          <p class="eyebrow">Aplicações</p>
+          <h2>Veja o que muda<br />quando a câmera entende.</h2>
+        </div>
+        <p class="section-intro">Comece por um evento crítico. Depois, amplie a inteligência para novas áreas, processos e decisões.</p>
+      </div>
+
+      <div class="application-list">
+        <article class="application-row reveal">
+          <div class="application-number">01</div>
+          <div class="application-copy">
+            <h3>Segurança operacional</h3>
+            <p>Identifique entradas em áreas controladas e situações que exigem resposta rápida.</p>
+          </div>
+          <div class="application-tags"><span>Zonas</span><span>Pessoas</span><span>Incidentes</span></div>
+          <div class="application-arrow">↗</div>
+        </article>
+
+        <article class="application-row reveal">
+          <div class="application-number">02</div>
+          <div class="application-copy">
+            <h3>Conformidade de processos</h3>
+            <p>Crie evidências visuais para desvios, etapas críticas e padrões operacionais.</p>
+          </div>
+          <div class="application-tags"><span>Rotinas</span><span>Auditoria</span><span>Qualidade</span></div>
+          <div class="application-arrow">↗</div>
+        </article>
+
+        <article class="application-row reveal">
+          <div class="application-number">03</div>
+          <div class="application-copy">
+            <h3>Visibilidade da operação</h3>
+            <p>Transforme ocorrências isoladas em histórico, indicadores e prioridades claras.</p>
+          </div>
+          <div class="application-tags"><span>Eventos</span><span>Dados</span><span>Decisão</span></div>
+          <div class="application-arrow">↗</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PLATAFORMA: MOCKUP FEITO SÓ COM HTML/CSS, FÁCIL DE SUBSTITUIR POR PRINT REAL -->
+    <section class="platform section-light" id="plataforma">
+      <div class="platform-copy reveal">
+        <p class="eyebrow eyebrow-dark">A plataforma</p>
+        <h2>Os eventos que precisam de atenção. Sem procurar em horas de vídeo.</h2>
+        <p>Visualize alertas, evidências, câmeras e histórico em uma interface criada para facilitar a resposta da operação.</p>
+        <ul class="feature-checklist">
+          <li><span>✓</span> Evidência visual automática</li>
+          <li><span>✓</span> Alertas e responsáveis</li>
+          <li><span>✓</span> Histórico centralizado</li>
+        </ul>
+      </div>
+
+      <div class="dashboard-shell reveal reveal-delay-1">
+        <div class="dashboard-sidebar">
+          <div class="sidebar-logo"><span></span></div>
+          <div class="sidebar-item active"></div>
+          <div class="sidebar-item"></div>
+          <div class="sidebar-item"></div>
+          <div class="sidebar-item"></div>
+        </div>
+        <div class="dashboard-main">
+          <div class="dashboard-header">
+            <div><small>Visão geral</small><strong>Central operacional</strong></div>
+            <div class="avatar">FE</div>
+          </div>
+          <div class="dashboard-stats">
+            <div><small>Câmeras ativas</small><strong>12</strong><span>100% online</span></div>
+            <div><small>Eventos hoje</small><strong>08</strong><span>3 críticos</span></div>
+            <div><small>Tempo de resposta</small><strong>04m</strong><span>-18% na semana</span></div>
+          </div>
+          <div class="dashboard-content">
+            <div class="dashboard-feed">
+              <div class="feed-heading"><strong>Eventos recentes</strong><span>Ver todos</span></div>
+              <div class="feed-row critical"><span class="feed-icon">!</span><div><strong>Entrada em área restrita</strong><small>Linha principal · CAM 04</small></div><time>Agora</time></div>
+              <div class="feed-row"><span class="feed-icon">↗</span><div><strong>Movimento fora do horário</strong><small>Expedição · CAM 09</small></div><time>12 min</time></div>
+              <div class="feed-row"><span class="feed-icon">✓</span><div><strong>Incidente encerrado</strong><small>Pátio · CAM 02</small></div><time>28 min</time></div>
+            </div>
+            <div class="dashboard-map">
+              <div class="map-grid"></div>
+              <span class="map-point point-one"></span><span class="map-point point-two"></span><span class="map-point point-three"></span>
+              <div class="map-label">PLANTA · UNIDADE 01</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pilot section-blue">
+      <div class="pilot-top reveal">
+        <div class="pilot-index">/ PILOTO</div>
+        <p>Implementação inicial focada em um evento crítico da sua operação.</p>
+      </div>
+      <div class="pilot-main reveal reveal-delay-1">
+        <h2>Comece pequeno.<br />Prove valor.<br /><span>Escale a inteligência.</span></h2>
+        <div class="pilot-steps">
+          <div><span>01</span><p>Escolha uma área e uma situação crítica.</p></div>
+          <div><span>02</span><p>Conecte a câmera e configure a regra.</p></div>
+          <div><span>03</span><p>Valide eventos, alertas e resposta.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq section-light">
+      <div class="faq-heading reveal">
+        <p class="eyebrow eyebrow-dark">Perguntas frequentes</p>
+        <h2>O essencial antes de começar.</h2>
+      </div>
+      <div class="faq-list reveal reveal-delay-1">
+        <details>
+          <summary>A Campex exige a troca das câmeras? <span>+</span></summary>
+          <p>Não necessariamente. O piloto começa avaliando a infraestrutura já instalada e a compatibilidade com o sistema.</p>
+        </details>
+        <details>
+          <summary>Por onde o projeto começa? <span>+</span></summary>
+          <p>Por uma área específica e um evento operacional importante, para validar a tecnologia com clareza e velocidade.</p>
+        </details>
+        <details>
+          <summary>O que acontece quando um evento é detectado? <span>+</span></summary>
+          <p>A plataforma registra o incidente, salva a evidência e pode enviar o alerta para os responsáveis definidos.</p>
+        </details>
+        <details>
+          <summary>A solução pode crescer para outras áreas? <span>+</span></summary>
+          <p>Sim. Depois do primeiro caso validado, novas câmeras, eventos e unidades podem ser adicionados à mesma camada de inteligência.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CONTATO: TROQUE O LINK DO BOTÃO PELO WHATSAPP, CALENDLY OU FORMULÁRIO -->
+    <section class="contact section-dark" id="contato">
+      <div class="contact-orbit" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="contact-content reveal">
+        <p class="eyebrow">Próximo passo</p>
+        <h2>Pronto para transformar<br />o que sua operação vê?</h2>
+        <p>Converse com a Campex sobre o primeiro caso de uso para a sua empresa.</p>
+        <a class="button button-light" href="mailto:contato@campex.ai">Falar com a Campex <span>↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="brand footer-brand" href="#inicio">
+      <svg class="brand-mark" viewBox="0 0 42 42" aria-hidden="true">
+        <path d="M7 7h12v12H7zM23 7h12v12H23zM7 23h12v12H7z" />
+        <path class="brand-mark-accent" d="M23 23h12v12H23z" />
+      </svg>
+      <span>CAMPEX</span>
+    </a>
+    <div class="footer-copy">
+      <p>Inteligência para decisões reais.</p>
+      <p>© <span data-year></span> Campex. Todos os direitos reservados.</p>
+    </div>
+    <a href="#inicio" class="back-top">Voltar ao topo ↑</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
