@@ -1,0 +1,48 @@
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400&f[]=switzer@400,500,600&display=swap');
+
+:root {
+  /* Brand */
+  --ink: #11110f;
+  --ink-soft: #4f4e49;
+  --paper: #f3f2ee;
+  --paper-2: #eceae4;
+  --white: #ffffff;
+  --line: rgba(17, 17, 15, 0.14);
+  --line-strong: rgba(17, 17, 15, 0.26);
+
+  /* Typography — Campex */
+  --font-display: 'Switzer', system-ui, sans-serif;
+  --font-sans: 'Switzer', system-ui, sans-serif;
+  --font-hero: 'Satoshi', 'Switzer', system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --text-hero: clamp(4rem, 7.2vw, 8.4rem);
+  --text-h2: clamp(2.8rem, 5.2vw, 6.6rem);
+  --text-h3: clamp(1.5rem, 2vw, 2.25rem);
+  --text-body: clamp(1rem, 1.1vw, 1.125rem);
+  --text-caption: 0.72rem;
+
+  --tracking-tight: -0.045em;
+  --tracking-tighter: -0.055em;
+  --leading-display: 0.94;
+  --leading-body: 1.55;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 40px;
+  --space-6: 64px;
+  --space-7: 96px;
+  --space-8: 160px;
+  --space-9: 220px;
+
+  --page-x: clamp(24px, 4vw, 72px);
+  --section-y: clamp(96px, 12vw, 180px);
+  --max-width: 1600px;
+
+  /* Motion */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur: 650ms;
+}
