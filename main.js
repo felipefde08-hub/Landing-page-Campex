@@ -51,6 +51,26 @@ if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
     );
   });
 
+  // Como funciona: as 4 etapas entram em sequência, da esquerda para a direita.
+  const flow = document.querySelector('[data-flow]');
+  if (flow && !prefersReducedMotion) {
+    gsap.fromTo(flow.querySelectorAll('[data-flow-step]'),
+      { x: -18, opacity: 0 },
+      {
+        x: 0,
+        opacity: 1,
+        duration: .9,
+        ease: 'power3.out',
+        stagger: .16,
+        scrollTrigger: {
+          trigger: flow,
+          start: 'top 80%',
+          once: true,
+        },
+      }
+    );
+  }
+
   const steps = [...document.querySelectorAll('[data-step]')];
   const stages = [...document.querySelectorAll('[data-stage]')];
 
@@ -116,3 +136,137 @@ const updateHeader = () => {
 updateHeader();
 window.addEventListener('scroll', updateHeader, { passive: true });
 window.addEventListener('resize', updateHeader);
+
+// Header: dropdowns (clique; hover em desktop), menu mobile e links de Soluções.
+const nav = document.querySelector('[data-nav]');
+const navToggle = document.querySelector('[data-nav-toggle]');
+const menus = [...document.querySelectorAll('[data-menu]')];
+const desktopHover = window.matchMedia('(hover: hover) and (min-width: 981px)');
+
+const setMenu = (menu, open) => {
+  menu.classList.toggle('is-open', open);
+  menu.querySelector('[data-menu-trigger]').setAttribute('aria-expanded', String(open));
+};
+const closeMenus = (except) => menus.forEach((menu) => { if (menu !== except) setMenu(menu, false); });
+
+const setNavOpen = (open) => {
+  if (!nav || !navToggle) return;
+  nav.classList.toggle('is-open', open);
+  header?.classList.toggle('is-menu-open', open);
+  navToggle.setAttribute('aria-expanded', String(open));
+  navToggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+  document.documentElement.style.overflow = open ? 'hidden' : '';
+  if (!open) closeMenus();
+};
+
+menus.forEach((menu) => {
+  const trigger = menu.querySelector('[data-menu-trigger]');
+  let hoverTimer = 0;
+
+  trigger.addEventListener('click', (event) => {
+    // Com mouse em desktop o hover já abriu: o clique mantém aberto. Teclado (detail 0) alterna.
+    const isOpen = menu.classList.contains('is-open');
+    const open = desktopHover.matches && event.detail > 0 ? true : !isOpen;
+    // Em desktop só um dropdown aberto por vez; no menu mobile funcionam como acordeão.
+    if (desktopHover.matches || window.innerWidth > 980) closeMenus(menu);
+    setMenu(menu, open);
+  });
+
+  menu.addEventListener('mouseenter', () => {
+    if (!desktopHover.matches) return;
+    window.clearTimeout(hoverTimer);
+    closeMenus(menu);
+    setMenu(menu, true);
+  });
+  menu.addEventListener('mouseleave', () => {
+    if (!desktopHover.matches) return;
+    hoverTimer = window.setTimeout(() => setMenu(menu, false), 140);
+  });
+});
+
+document.addEventListener('click', (event) => {
+  if (!event.target.closest('[data-menu]')) {
+    if (window.innerWidth > 980) closeMenus();
+  }
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key !== 'Escape') return;
+  const open = menus.find((menu) => menu.classList.contains('is-open'));
+  if (open && window.innerWidth > 980) {
+    setMenu(open, false);
+    open.querySelector('[data-menu-trigger]').focus();
+  } else if (nav?.classList.contains('is-open')) {
+    setNavOpen(false);
+    navToggle.focus();
+  }
+});
+
+navToggle?.addEventListener('click', () => setNavOpen(!nav.classList.contains('is-open')));
+
+// Qualquer link do menu fecha dropdowns/menu mobile; os de Soluções também abrem a aba certa.
+nav?.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener('click', () => {
+    const slug = link.dataset.resultsLink;
+    if (slug) document.getElementById(`results-tab-${slug}`)?.click();
+    closeMenus();
+    setNavOpen(false);
+  });
+});
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 980 && nav?.classList.contains('is-open')) setNavOpen(false);
+});
+
+// "Um sistema. Diferentes resultados." — abas acessíveis, troca de lista com fade rápido.
+const resultsTabs = [...document.querySelectorAll('[data-results-tab]')];
+
+if (resultsTabs.length) {
+  const FADE_MS = prefersReducedMotion ? 0 : 200;
+  const resultsPanels = resultsTabs.map((tab) => document.getElementById(tab.getAttribute('aria-controls')));
+  let fadeTimer = 0;
+
+  const selectResults = (nextTab) => {
+    if (nextTab.getAttribute('aria-selected') === 'true') return;
+    const nextPanel = document.getElementById(nextTab.getAttribute('aria-controls'));
+
+    resultsTabs.forEach((tab) => {
+      const active = tab === nextTab;
+      tab.classList.toggle('is-active', active);
+      tab.setAttribute('aria-selected', String(active));
+      tab.tabIndex = active ? 0 : -1;
+    });
+
+    // A new click cancels any switch in progress.
+    window.clearTimeout(fadeTimer);
+    resultsPanels.forEach((panel) => { if (!panel.hidden) panel.classList.add('is-fading'); });
+
+    fadeTimer = window.setTimeout(() => {
+      resultsPanels.forEach((panel) => {
+        panel.hidden = panel !== nextPanel;
+        panel.classList.remove('is-fading');
+      });
+      nextPanel.classList.add('is-fading');
+      // Force a reflow so the fade-in transition runs.
+      void nextPanel.offsetWidth;
+      nextPanel.classList.remove('is-fading');
+    }, FADE_MS);
+  };
+
+  resultsTabs.forEach((tab, index) => {
+    tab.addEventListener('click', () => selectResults(tab));
+    tab.addEventListener('keydown', (event) => {
+      const last = resultsTabs.length - 1;
+      const target = {
+        ArrowRight: index === last ? 0 : index + 1,
+        ArrowLeft: index === 0 ? last : index - 1,
+        Home: 0,
+        End: last,
+      }[event.key];
+      if (target === undefined) return;
+      event.preventDefault();
+      resultsTabs[target].focus();
+      selectResults(resultsTabs[target]);
+    });
+  });
+}
