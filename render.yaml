@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: campex-landing
+    runtime: static
+    buildCommand: ""
+    staticPublishPath: .
