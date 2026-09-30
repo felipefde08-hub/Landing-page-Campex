@@ -154,7 +154,7 @@ const setNavOpen = (open) => {
   nav.classList.toggle('is-open', open);
   header?.classList.toggle('is-menu-open', open);
   navToggle.setAttribute('aria-expanded', String(open));
-  navToggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+  navToggle.setAttribute('aria-label', window.campexTranslate(open ? 'Fechar menu' : 'Abrir menu'));
   document.documentElement.style.overflow = open ? 'hidden' : '';
   if (!open) closeMenus();
 };

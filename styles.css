@@ -169,16 +169,6 @@ button, input, textarea, select { font: inherit; }
   border-radius: 2px;
   box-shadow: 0 0 0 1px rgba(17,17,15,.12);
 }
-.lang-option.is-soon { color: #85847d; cursor: not-allowed; }
-.lang-option.is-soon .flag { opacity: .55; }
-.lang-option em {
-  margin-left: auto;
-  font-family: var(--font-mono);
-  font-size: .56rem;
-  font-style: normal;
-  letter-spacing: .08em;
-  white-space: nowrap;
-}
 .lang-check {
   width: 12px;
   height: 12px;
