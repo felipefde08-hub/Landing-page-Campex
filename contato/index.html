@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Conte sobre sua operação. Nosso time responde em até um dia útil." />
+  <meta name="theme-color" content="#f3f2ee" />
+  <title>Contato — Campex</title>
+  <link rel="icon" href="data:," />
+  <link rel="stylesheet" href="/tokens.css" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="stylesheet" href="/pages.css" />
+</head>
+<body>
+  <script src="/partials.js" data-partial="header"></script>
+
+  <main id="top">
+    <section class="page-hero" aria-labelledby="page-title" data-hero>
+      <div class="page-hero-inner">
+        <p class="eyebrow light">EMPRESA</p>
+        <h1 id="page-title">Contato</h1>
+        <p class="page-lead">Conte sobre sua operação. Nosso time responde em até um dia útil.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <!-- O envio ainda não tem backend: main.js intercepta o submit. Conectar aqui quando a API existir. -->
+      <form class="contact-form" data-contact-form novalidate>
+        <div class="contact-field">
+          <label for="contact-name">Nome</label>
+          <input id="contact-name" name="name" type="text" autocomplete="name" required />
+        </div>
+        <div class="contact-field">
+          <label for="contact-email">E-mail</label>
+          <input id="contact-email" name="email" type="email" autocomplete="email" required />
+        </div>
+        <div class="contact-field contact-field-full">
+          <label for="contact-company">Empresa</label>
+          <input id="contact-company" name="company" type="text" autocomplete="organization" />
+        </div>
+        <div class="contact-field contact-field-full">
+          <label for="contact-message">Mensagem</label>
+          <textarea id="contact-message" name="message" required></textarea>
+        </div>
+        <div class="contact-actions">
+          <button class="button button-dark" type="submit">Enviar</button>
+          <p class="form-status" role="status" data-form-status></p>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="/partials.js" data-partial="footer"></script>
+
+  <script src="/i18n.js"></script>
+  <script src="/main.js"></script>
+</body>
+</html>

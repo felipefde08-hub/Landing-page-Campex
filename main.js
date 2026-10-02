@@ -137,7 +137,7 @@ updateHeader();
 window.addEventListener('scroll', updateHeader, { passive: true });
 window.addEventListener('resize', updateHeader);
 
-// Header: dropdowns (clique; hover em desktop), menu mobile e links de Soluções.
+// Header: dropdowns (clique; hover em desktop) e menu mobile.
 const nav = document.querySelector('[data-nav]');
 const navToggle = document.querySelector('[data-nav-toggle]');
 const menus = [...document.querySelectorAll('[data-menu]')];
@@ -204,11 +204,9 @@ document.addEventListener('keydown', (event) => {
 
 navToggle?.addEventListener('click', () => setNavOpen(!nav.classList.contains('is-open')));
 
-// Qualquer link do menu fecha dropdowns/menu mobile; os de Soluções também abrem a aba certa.
-nav?.querySelectorAll('a[href^="#"]').forEach((link) => {
+// Qualquer link do menu fecha dropdowns/menu mobile.
+nav?.querySelectorAll('a').forEach((link) => {
   link.addEventListener('click', () => {
-    const slug = link.dataset.resultsLink;
-    if (slug) document.getElementById(`results-tab-${slug}`)?.click();
     closeMenus();
     setNavOpen(false);
   });
@@ -270,3 +268,12 @@ if (resultsTabs.length) {
     });
   });
 }
+
+// Contato: o envio ainda não tem backend. Quando a API existir, trocar este handler por um fetch para ela.
+const contactForm = document.querySelector('[data-contact-form]');
+contactForm?.addEventListener('submit', (event) => {
+  event.preventDefault();
+  if (!contactForm.reportValidity()) return;
+  const status = contactForm.querySelector('[data-form-status]');
+  status.textContent = window.campexTranslate('O envio ainda não está conectado. Escreva para contato@campex.ai.');
+});

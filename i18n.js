@@ -157,6 +157,21 @@
     ['Redes sociais', 'Social media', 'Redes sociales'],
     ['LinkedIn (abre em nova aba)', 'LinkedIn (opens in a new tab)', 'LinkedIn (se abre en una pestaña nueva)'],
     ['Instagram (abre em nova aba)', 'Instagram (opens in a new tab)', 'Instagram (se abre en una pestaña nueva)'],
+    // Páginas internas
+    ['PRODUTO', 'PRODUCT', 'PRODUCTO'],
+    ['SOLUÇÕES', 'SOLUTIONS', 'SOLUCIONES'],
+    ['EMPRESA', 'COMPANY', 'EMPRESA'],
+    ['Menos tempo parado, mais tempo produzindo.', 'Less downtime, more time producing.', 'Menos tiempo detenido, más tiempo produciendo.'],
+    ['Cada desvio registrado, com evidência.', 'Every deviation logged, with evidence.', 'Cada desviación registrada, con evidencia.'],
+    ['Riscos visíveis antes de virarem incidentes.', 'Risks made visible before they become incidents.', 'Riesgos visibles antes de convertirse en incidentes.'],
+    ['A operação inteira, de ponta a ponta.', 'The whole operation, end to end.', 'Toda la operación, de punta a punta.'],
+    ['Conte sobre sua operação. Nosso time responde em até um dia útil.', 'Tell us about your operation. Our team replies within one business day.', 'Cuéntanos sobre tu operación. Nuestro equipo responde en un día hábil.'],
+    ['Conteúdo em construção.', 'Content coming soon.', 'Contenido en construcción.'],
+    ['Nome', 'Name', 'Nombre'],
+    ['E-mail', 'Email', 'Correo electrónico'],
+    ['Mensagem', 'Message', 'Mensaje'],
+    ['Enviar', 'Send', 'Enviar'],
+    ['O envio ainda não está conectado. Escreva para contato@campex.ai.', 'Sending is not connected yet. Write to contato@campex.ai.', 'El envío aún no está conectado. Escribe a contato@campex.ai.'],
   ];
 
   const languages = ['pt', 'en', 'es'];
@@ -180,6 +195,8 @@
       if (element.hasAttribute(attribute)) element.setAttribute(attribute, translate(element.getAttribute(attribute)));
     });
   });
+  // Títulos das páginas internas: "Página — Campex".
+  document.title = document.title.split(' — ').map(translate).join(' — ');
   const description = document.querySelector('meta[name="description"]');
   description.content = translate(description.content);
   document.documentElement.lang = language === 'pt' ? 'pt-BR' : language;
@@ -204,4 +221,13 @@
     }
   });
   document.querySelector('.lang-option.is-current').append(check);
+
+  // Links internos entre páginas carregam o idioma atual (PT é o padrão e fica sem parâmetro).
+  if (language !== 'pt') {
+    document.querySelectorAll('a[href^="/"]:not(.lang-option)').forEach((link) => {
+      const url = new URL(link.href);
+      url.searchParams.set('lang', language);
+      link.href = `${url.pathname}${url.search}${url.hash}`;
+    });
+  }
 })();
