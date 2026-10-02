@@ -28,6 +28,13 @@
   line-height: var(--leading-body);
 }
 
+.page-alt {
+  margin: 20px 0 0;
+  color: rgba(255,255,255,.68);
+  font-size: .95rem;
+}
+.page-alt a { color: var(--white); text-underline-offset: 4px; }
+
 /* Blocos provisórios: cada um vira uma seção real da página. */
 .page-blocks {
   display: grid;
@@ -85,6 +92,8 @@
 }
 .contact-actions .button { cursor: pointer; }
 .form-status { margin: 0; color: var(--ink-soft); }
+.contact-trap { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.contact-actions .button:disabled { opacity: .5; cursor: progress; }
 
 /* Link da página atual no header e no footer. */
 .nav-menu a[aria-current="page"],

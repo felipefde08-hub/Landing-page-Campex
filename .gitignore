@@ -1,3 +1,5 @@
 .DS_Store
 .kilo/
 .vscode/
+.env
+node_modules/

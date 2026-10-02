@@ -269,11 +269,39 @@ if (resultsTabs.length) {
   });
 }
 
-// Contato: o envio ainda não tem backend. Quando a API existir, trocar este handler por um fetch para ela.
+// Contato: envia para a API (server/). Em dev, roda localmente com `npm run dev` dentro de server/.
+const CONTACT_ENDPOINT = ['localhost', '127.0.0.1'].includes(window.location.hostname)
+  ? 'http://localhost:4310/api/contato'
+  : 'https://campex-api.onrender.com/api/contato';
+
 const contactForm = document.querySelector('[data-contact-form]');
-contactForm?.addEventListener('submit', (event) => {
+contactForm?.addEventListener('submit', async (event) => {
   event.preventDefault();
   if (!contactForm.reportValidity()) return;
+
   const status = contactForm.querySelector('[data-form-status]');
-  status.textContent = window.campexTranslate('O envio ainda não está conectado. Escreva para contato@campex.ai.');
+  const submit = contactForm.querySelector('[type="submit"]');
+  const showStatus = (text) => { status.textContent = window.campexTranslate(text); };
+  const payload = Object.fromEntries(new FormData(contactForm));
+  payload.lang = document.documentElement.lang.slice(0, 2);
+
+  submit.disabled = true;
+  showStatus('Enviando…');
+  try {
+    const response = await fetch(CONTACT_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (response.status === 429) throw new Error('rate_limited');
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    contactForm.reset();
+    showStatus('Mensagem enviada. Nosso time responde em breve.');
+  } catch (error) {
+    showStatus(error.message === 'rate_limited'
+      ? 'Muitos envios seguidos. Tente de novo em alguns minutos.'
+      : 'Não foi possível enviar agora. Escreva para contato@campex.ai.');
+  } finally {
+    submit.disabled = false;
+  }
 });

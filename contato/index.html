@@ -20,11 +20,12 @@
         <p class="eyebrow light">EMPRESA</p>
         <h1 id="page-title">Contato</h1>
         <p class="page-lead">Conte sobre sua operação. Nosso time responde em até um dia útil.</p>
+        <p class="page-alt">Prefere conversar agora? <a href="https://wa.me/5517976048159" target="_blank" rel="noopener noreferrer">WhatsApp: +55 17 97604-8159</a></p>
       </div>
     </section>
 
     <section class="section">
-      <!-- O envio ainda não tem backend: main.js intercepta o submit. Conectar aqui quando a API existir. -->
+      <!-- Enviado por main.js para a API em server/ (POST /api/contato). -->
       <form class="contact-form" data-contact-form novalidate>
         <div class="contact-field">
           <label for="contact-name">Nome</label>
@@ -41,6 +42,11 @@
         <div class="contact-field contact-field-full">
           <label for="contact-message">Mensagem</label>
           <textarea id="contact-message" name="message" required></textarea>
+        </div>
+        <!-- Honeypot anti-spam: invisível para pessoas; se vier preenchido, a API descarta. -->
+        <div class="contact-trap" aria-hidden="true">
+          <label for="contact-website">Website</label>
+          <input id="contact-website" name="website" type="text" tabindex="-1" autocomplete="off" />
         </div>
         <div class="contact-actions">
           <button class="button button-dark" type="submit">Enviar</button>

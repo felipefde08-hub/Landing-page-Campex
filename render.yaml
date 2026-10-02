@@ -1,6 +1,28 @@
 services:
+  # Landing (estática): HTML/CSS/JS da raiz.
   - type: web
     name: campex-landing
     runtime: static
     buildCommand: ""
     staticPublishPath: .
+
+  # API (Node): formulário de contato. Código em server/.
+  - type: web
+    name: campex-api
+    runtime: node
+    rootDir: server
+    buildCommand: ""
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ALLOWED_ORIGINS
+        value: https://campex-landing.onrender.com
+      - key: CONTACT_TO
+        value: contato@campex.ai
+      - key: CONTACT_FROM
+        value: Campex Site <site@campex.ai>
+      # Preencher no painel do Render (não fica no git).
+      - key: RESEND_API_KEY
+        sync: false

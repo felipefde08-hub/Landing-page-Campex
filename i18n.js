@@ -15,6 +15,7 @@
     ['Sobre', 'About', 'Acerca de'],
     ['Contato', 'Contact', 'Contacto'],
     ['Falar com nosso time', 'Talk to our team', 'Habla con nuestro equipo'],
+    ['Fazer login', 'Log in', 'Iniciar sesión'],
     ['INTELIGÊNCIA OPERACIONAL PARA O MUNDO FÍSICO', 'OPERATIONAL INTELLIGENCE FOR THE PHYSICAL WORLD', 'INTELIGENCIA OPERATIVA PARA EL MUNDO FÍSICO'],
     ['Sua operação já tem olhos.', 'Your operation already has eyes.', 'Tu operación ya tiene ojos.'],
     ['Agora ela pode entender.', 'Now it can understand.', 'Ahora puede entender.'],
@@ -157,6 +158,8 @@
     ['Redes sociais', 'Social media', 'Redes sociales'],
     ['LinkedIn (abre em nova aba)', 'LinkedIn (opens in a new tab)', 'LinkedIn (se abre en una pestaña nueva)'],
     ['Instagram (abre em nova aba)', 'Instagram (opens in a new tab)', 'Instagram (se abre en una pestaña nueva)'],
+    ['WhatsApp (abre em nova aba)', 'WhatsApp (opens in a new tab)', 'WhatsApp (se abre en una pestaña nueva)'],
+    ['Prefere conversar agora?', 'Prefer to talk now?', '¿Prefieres hablar ahora?'],
     // Páginas internas
     ['PRODUTO', 'PRODUCT', 'PRODUCTO'],
     ['SOLUÇÕES', 'SOLUTIONS', 'SOLUCIONES'],
@@ -171,7 +174,10 @@
     ['E-mail', 'Email', 'Correo electrónico'],
     ['Mensagem', 'Message', 'Mensaje'],
     ['Enviar', 'Send', 'Enviar'],
-    ['O envio ainda não está conectado. Escreva para contato@campex.ai.', 'Sending is not connected yet. Write to contato@campex.ai.', 'El envío aún no está conectado. Escribe a contato@campex.ai.'],
+    ['Enviando…', 'Sending…', 'Enviando…'],
+    ['Mensagem enviada. Nosso time responde em breve.', 'Message sent. Our team will reply soon.', 'Mensaje enviado. Nuestro equipo responderá pronto.'],
+    ['Muitos envios seguidos. Tente de novo em alguns minutos.', 'Too many attempts. Please try again in a few minutes.', 'Demasiados envíos seguidos. Inténtalo de nuevo en unos minutos.'],
+    ['Não foi possível enviar agora. Escreva para contato@campex.ai.', 'We couldn’t send your message right now. Write to contato@campex.ai.', 'No fue posible enviar ahora. Escribe a contato@campex.ai.'],
   ];
 
   const languages = ['pt', 'en', 'es'];

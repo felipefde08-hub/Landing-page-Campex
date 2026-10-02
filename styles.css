@@ -221,6 +221,18 @@ button, input, textarea, select { font: inherit; }
   background: var(--ink);
   border-color: var(--ink);
 }
+/* Login: link secundário ao lado do CTA (no mobile, vai para dentro do menu). */
+.header-login {
+  padding: 12px 4px;
+  color: currentColor;
+  font-size: .9rem;
+  text-decoration: none;
+  opacity: .86;
+  transition: opacity .25s ease;
+}
+.header-login:hover,
+.header-login:focus-visible { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
+.nav-login { display: none; }
 
 .section {
   width: min(100%, var(--max-width));
@@ -1410,7 +1422,15 @@ p { font-size: var(--text-body); line-height: var(--leading-body); color: var(--
   :root { --page-x: 20px; --section-y: 92px; }
   .site-header { gap: 14px; padding: 16px 20px; }
   .brand-logo { width: 112px; }
-  .header-actions > .header-cta { display: none; }
+  .header-actions > .header-cta,
+  .header-actions > .header-login { display: none; }
+  .nav-login {
+    display: inline-flex;
+    justify-content: center;
+    margin-top: 24px;
+    padding: 12px 16px;
+    border: 1px solid var(--line-strong);
+  }
   .nav-cta {
     display: inline-flex;
     justify-content: center;
